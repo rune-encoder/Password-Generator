@@ -13,14 +13,43 @@ var lettersChar = characters.upperCase.concat(characters.lowerCase);
 // This function is used to determine User's password choices: 
 // Choices: 1. Number of characters in password, 2. Requests: Numbers, 3. Requests Special Characters. 
 function determineUserPass() {
+  var messageNum = [];
+  var messageSpe = [];
+
+  // Here user will: 
+  // 1. Input requested number of characters (Returns a number), 
+  var charLength = parseInt(prompt(("How many characters do you want? ")));
+  if (charLength) {
+    window.alert("The user has chosen a total of " + charLength + " characters for the generated password.")
+  } else if (!charLength) {
+    window.alert("The user has chosen to cancel operation.")
+    return;
+  }
+  // 2. Input if they requests number characters (Returns true or false),
+  var hasNumberChar = confirm("Click OK if you'd like numeric characters generated. ");
+  if (hasNumberChar) {
+    window.alert("Numeric Characters WILL be included in generated password.")
+    messageNum = "Yes";
+  } else {
+    window.alert("Numeric Characters WILL NOT be included in generated password.")
+    messageNum = "No";
+  }
+  // 3. Input if they requests special characters (Returns true or false).
+  var hasSpecialChar = confirm("Click OK if you'd like special characters generated. ");
+  if (hasSpecialChar) {
+    window.alert("Special Characters WILL be included in generated password.")
+    messageSpe = "Yes";
+  } else {
+    window.alert("Special Characters WILL NOT be included in generated password.")
+    messageSpe = "No";
+  }
+
+  window.alert("User's Choices: \nNumber of Characters: " + charLength + "\nOpted for Number Characters: " + messageNum + "\nOpted for Special Characters: " + messageSpe);
+
   var userPassOptions = {
-    // Here user will: 
-    // 1. Input requested number of characters (Returns a number), 
-    charLength: parseInt(prompt(("How many characters do you want? "))),
-    // 2. Input if they requests number characters (Returns true or false),
-    hasNumberChar: confirm("Click OK if you'd like numeric characters generated. "),
-    // 3. Input if they requests special characters (Returns true or false).
-    hasSpecialChar: confirm("Click OK if you'd like special characters generated. ")
+    charLength: charLength,
+    hasNumberChar: hasNumberChar,
+    hasSpecialChar: hasSpecialChar
   };
   return userPassOptions
 }
