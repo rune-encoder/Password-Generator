@@ -1,4 +1,3 @@
-
 var characters = {
   numbers: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
   upperCase: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
@@ -8,40 +7,80 @@ var characters = {
 
 var lettersChar = characters.upperCase.concat(characters.lowerCase);
 
-var userPassOptions = {
-  charLength: parseInt(prompt(("How many characters do you want? "))),
-  hasNumberChar: confirm("Click OK if you'd like special characters generated."),
-  hasSpecialChar: confirm("Click OK if you'd like numeric characters generated. ") 
+function determineUserPass() {
+  var userPassOptions = {
+    charLength: parseInt(prompt(("How many characters do you want? "))),
+    hasNumberChar: confirm("Click OK if you'd like numeric characters generated. "),
+    hasSpecialChar: confirm("Click OK if you'd like special characters generated. ")
+  };
+  return userPassOptions
 }
+
+function randomize(array) {
+  var randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex]
+}
+
+function createPassword () {
+  var options = determineUserPass();
+  var chosenCharacters = [];
+  var guaranteedChar = [];
+
+  if (options.hasNumberChar === true && options.hasSpecialChar === true) {
+    chosenCharacters = lettersChar.concat(characters.numbers, characters.special);
+    guaranteedChar.push(randomize(characters.numbers));
+    guaranteedChar.push(randomize(characters.special));
+  } else if (options.hasNumberChar === true && options.hasSpecialChar === false) { 
+    chosenCharacters = lettersChar.concat(characters.numbers);
+    guaranteedChar.push(randomize(characters.numbers));
+  } else if (options.hasNumberChar === false && options.hasSpecialChar === true) {
+    chosenCharacters = lettersChar.concat(characters.special);
+    guaranteedChar.push(randomize(characters.special));
+  } else {
+    chosenCharacters = lettersChar;
+  }
+  console.log(typeof guaranteedChar);
+  console.log(guaranteedChar.length);
+  console.log(guaranteedChar);
+  console.log(chosenCharacters);
+  console.log(typeof chosenCharacters);
+  console.log(" ");
+
+
+
+
+
+  return; 
+}
+
+createPassword();
+
+
 
 //Console.Log Check
-console.log(characters.numbers);
-console.log(characters.upperCase);
-console.log(characters.lowerCase);
-console.log(characters.special);
-console.log(" ");
-console.log(lettersChar);
-console.log(" ");
-console.log(userPassOptions.charLength);
-console.log(typeof userPassOptions.charLength);
-console.log(userPassOptions.hasNumberChar);
-console.log(userPassOptions.hasSpecialChar);
-console.log(" ");
+// console.log(options);
+// console.log(typeof options);
+// console.log(characters.numbers);
+// console.log(characters.upperCase);
+// console.log(characters.lowerCase);
+// console.log(characters.special);
+// console.log(" ");
+// console.log(lettersChar);
+// console.log(" ");
+// console.log(options.charLength);
+// console.log(typeof options.charLength);
+// console.log(options.hasNumberChar);
+// console.log(options.hasSpecialChar);
+// console.log(" ");
+//Console.Log Check
 
-if (userPassOptions.hasNumberChar === true && userPassOptions.hasSpecialChar === true) {
-  var chosenCharacters = lettersChar.concat(characters.numbers, characters.special);
-} else if (userPassOptions.hasNumberChar === true && userPassOptions.hasSpecialChar === false) { 
-  chosenCharacters = lettersChar.concat(characters.numbers);
-} else if (userPassOptions.hasNumberChar === false && userPassOptions.hasSpecialChar === true) {
-  chosenCharacters = lettersChar.concat(characters.special);
-} else {
-  chosenCharacters = lettersChar;
-}
 
- console.log(chosenCharacters);
- console.log(typeof chosenCharacters);
- console.log(" ");
 
+//Console.Log Check
+// console.log(chosenCharacters);
+// console.log(typeof chosenCharacters);
+// console.log(" ");
+//Console.Log Check
 
 // // Assignment Code
 // var generateBtn = document.querySelector("#generate");
