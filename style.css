@@ -134,10 +134,12 @@ button[disabled] {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
-  border: 2px dashed #F5BC27;
+  border: 1px solid #F5BC27;
   border-radius: 6px;
   resize: none;
   overflow: hidden;
+  color: #fff;
+  background: radial-gradient(circle, rgba(53,64,105,1) 0%, rgba(4,4,4,0.508935254491018) 0%, rgba(0,0,0,1) 100%);
 }
 
 @media (max-width: 690px) {
