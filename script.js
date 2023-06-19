@@ -25,6 +25,7 @@ function createPassword () {
   var options = determineUserPass();
   var chosenCharacters = [];
   var guaranteedChar = [];
+  var result = [];
 
   if (options.hasNumberChar === true && options.hasSpecialChar === true) {
     chosenCharacters = lettersChar.concat(characters.numbers, characters.special);
@@ -39,64 +40,40 @@ function createPassword () {
   } else {
     chosenCharacters = lettersChar;
   }
-  console.log(typeof guaranteedChar);
-  console.log(guaranteedChar.length);
+  
+  for (var i = 0; i < options.charLength; i++) {
+    randomChar = randomize(chosenCharacters);
+    result.push(randomChar);
+    console.log(result);
+    console.log("");
+  }
+
+  for (var i = 0; i < guaranteedChar.length; i++) {
+    result[i] = guaranteedChar[i];
+    console.log(result);
+    console.log("");
+  }
+
   console.log(guaranteedChar);
-  console.log(chosenCharacters);
-  console.log(typeof chosenCharacters);
-  console.log(" ");
 
-
-
-
-
-  return; 
+  return result.join("")
 }
 
-createPassword();
-
-
-
-//Console.Log Check
-// console.log(options);
-// console.log(typeof options);
-// console.log(characters.numbers);
-// console.log(characters.upperCase);
-// console.log(characters.lowerCase);
-// console.log(characters.special);
-// console.log(" ");
-// console.log(lettersChar);
-// console.log(" ");
-// console.log(options.charLength);
-// console.log(typeof options.charLength);
-// console.log(options.hasNumberChar);
-// console.log(options.hasSpecialChar);
-// console.log(" ");
-//Console.Log Check
-
-
-
-//Console.Log Check
-// console.log(chosenCharacters);
-// console.log(typeof chosenCharacters);
-// console.log(" ");
-//Console.Log Check
-
 // // Assignment Code
-// var generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate");
 
 // // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
+function writePassword() {
+  var password = createPassword();
 
-//   var passwordText = document.querySelector("#password");
+  var passwordText = document.querySelector("#password");
 
-//   passwordText.value = password;
-// }
+  passwordText.value = password;
+}
 
-// writePassword();
+writePassword();
 
 // // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword);
 
 
