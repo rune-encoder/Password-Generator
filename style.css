@@ -13,8 +13,11 @@ body,
 }
 
 body {
-  font-family: sans-serif;
-  background-color: #f9fbfd;
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url(./assets/background-img.png), linear-gradient(175deg, rgb(82, 82, 82) 45%, rgb(39, 36, 0) 100%);
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .wrapper {
@@ -25,28 +28,34 @@ body {
 
 header {
   text-align: center;
+  font-variant: small-caps;
   padding: 20px;
   padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  color: #fff;
 }
 
 .card {
-  background-color: hsl(0, 0%, 100%);
+  background-image: url(./assets/card-img.png), linear-gradient(175deg, rgba(0, 0, 0, 0.267) 0%, rgba(0, 0, 255, 0.185) 100%);
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 98%;
   border-radius: 5px;
   border-width: 1px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  color: hsl(206, 17%, 28%);
+  box-shadow: 0px 10px 30px 1px #DC9C1C;
+  color: #cacaca;
   font-size: 18px;
+  font-variant: small-caps;
   margin: 0 auto;
   max-width: 800px;
-  padding: 30px 40px;
+  padding: 35px 40px;
 }
 
 .card-header::after {
   content: " ";
   display: block;
   width: 100%;
-  background: #e7e9eb;
+  background: #F5BC27;
   height: 2px;
 }
 
@@ -62,7 +71,7 @@ header {
   content: " ";
   display: block;
   width: 100%;
-  background: #e7e9eb;
+  background: #F5BC27;
   height: 2px;
 }
 
@@ -74,11 +83,11 @@ header {
 
 .btn {
   border: none;
-  background-color: hsl(360, 91%, 36%);
+  background-color: #1a1002;
+  opacity: 95%;
   border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
-    0px;
-  color: hsl(0, 0%, 100%);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
+  color: #9C5E0E;
   display: inline-block;
   font-size: 22px;
   line-height: 22px;
@@ -86,6 +95,19 @@ header {
   padding: 14px 34px;
   text-align: center;
   cursor: pointer;
+  transition: all 0.5s ease-out;
+  outline: 0.1px solid;
+}
+
+.btn:hover {
+  background-color: #000000;
+  box-shadow: 0px 0px 20px 0px #3D2402 inset;
+  border: 0.5px solid #9C5E0E;
+  outline-color: #9C5E0E;
+  outline-style: initial;
+  outline-offset: -15px;
+  outline-width: 10px;
+  color: #F5BC28;
 }
 
 button[disabled] {
@@ -112,7 +134,7 @@ button[disabled] {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
-  border: 2px dashed #c0c7cf;
+  border: 2px dashed #F5BC27;
   border-radius: 6px;
   resize: none;
   overflow: hidden;
