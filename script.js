@@ -18,14 +18,13 @@ function determineUserPass() {
   // 1. Input requested number of characters (Returns a number), 
   var charLength = parseInt(prompt(("How many characters do you want? ")));
   if (charLength) {
-    window.alert("The user has chosen a total of " + charLength + " characters for the generated password.")
+    window.alert("The user has chosen a total of " + charLength + " characters for the generated password." + "\n\nPlease Note: Lowercase letters are automatically included and selected by default.")
   } else if (!charLength) {
     window.alert("The user has chosen to cancel operation.")
     return;
   }
-  window.alert ("Lowercase letters are included and selected by default.");
   // 2. Input if they requests Uppercase letters (Returns true or false),
-  var hasUpperCase = confirm("Click OK if you'd like uppercase letters generated. ");
+  var hasUpperCase = confirm("Click OK if you'd like uppercase letters to be generated. ");
   if (hasUpperCase) {
     window.alert("Uppercase letters WILL be included in generated password.")
     messageUpp = "Yes";
@@ -34,7 +33,7 @@ function determineUserPass() {
     messageUpp = "No";
   }
   // 3. Input if they requests number characters (Returns true or false),
-  var hasNumberChar = confirm("Click OK if you'd like numeric characters generated. ");
+  var hasNumberChar = confirm("Click OK if you'd like numeric characters to be generated. ");
   if (hasNumberChar) {
     window.alert("Numeric Characters WILL be included in generated password.")
     messageNum = "Yes";
@@ -43,7 +42,7 @@ function determineUserPass() {
     messageNum = "No";
   }
   // 4. Input if they requests special characters (Returns true or false).
-  var hasSpecialChar = confirm("Click OK if you'd like special characters generated. ");
+  var hasSpecialChar = confirm("Click OK if you'd like special characters to be generated. ");
   if (hasSpecialChar) {
     window.alert("Special Characters WILL be included in generated password.")
     messageSpe = "Yes";
@@ -53,7 +52,7 @@ function determineUserPass() {
   }
 
   // Message is displayed with all of the user's choices.
-  window.alert("User's Choices: \nNumber of Characters: " + charLength + "\nOpted for Uppercase Letters: " + messageUpp + "\nOpted for Number Characters: " + messageNum + "\nOpted for Special Characters: " + messageSpe);
+  window.alert("User's Choices: \nNumber of Characters: " + charLength + "\nLowercase Letters Default: Yes" + "\nOpted for Uppercase Letters: " + messageUpp + "\nOpted for Number Characters: " + messageNum + "\nOpted for Special Characters: " + messageSpe);
 
   // We then collect all of the user's options and make an object to use these options later.
   var userPassOptions = {
@@ -91,6 +90,7 @@ function createPassword () {
     // 1. Join all Letters, Numbers, and Special Characters into one array.
     chosenCharacters = characters.lowerCase.concat(characters.upperCase, characters.numbers, characters.special);
     // 2. Create one random Uppercase letter, Number and one Special Character: Will be added to password no matter what.
+    guaranteedChar.push(randomize(characters.lowerCase));
     guaranteedChar.push(randomize(characters.upperCase));
     guaranteedChar.push(randomize(characters.numbers));
     guaranteedChar.push(randomize(characters.special));
@@ -98,34 +98,40 @@ function createPassword () {
   // If user desires uppercase letters and numbers: 
   } else if (options.hasUpperCase && options.hasNumberChar && !options.hasSpecialChar) { 
     chosenCharacters = characters.lowerCase.concat(characters.upperCase, characters.numbers);
+    guaranteedChar.push(randomize(characters.lowerCase));
     guaranteedChar.push(randomize(characters.upperCase));
     guaranteedChar.push(randomize(characters.numbers));
 
   // If user desires uppercase letters and and special characters: 
   } else if (options.hasUpperCase && !options.hasNumberChar && options.hasSpecialChar) {
     chosenCharacters = characters.lowerCase.concat(characters.upperCase, characters.special);
+    guaranteedChar.push(randomize(characters.lowerCase));
     guaranteedChar.push(randomize(characters.upperCase));
     guaranteedChar.push(randomize(characters.special));
   
   // If user desires numbers and special characters: 
   } else if (!options.hasUpperCase && options.hasNumberChar && options.hasSpecialChar) {
     chosenCharacters = characters.lowerCase.concat(characters.numbers, characters.special);
+    guaranteedChar.push(randomize(characters.lowerCase));
     guaranteedChar.push(randomize(characters.numbers));
     guaranteedChar.push(randomize(characters.special));
   
   // If user desires uppercase letters: 
   } else if (options.hasUpperCase && !options.hasNumberChar && !options.hasSpecialChar) {
     chosenCharacters = characters.lowerCase.concat(characters.upperCase);
+    guaranteedChar.push(randomize(characters.lowerCase));
     guaranteedChar.push(randomize(characters.upperCase));
 
   // If user desires numbers: 
   } else if (!options.hasUpperCase && options.hasNumberChar && !options.hasSpecialChar) {
     chosenCharacters = characters.lowerCase.concat(characters.numbers);
+    guaranteedChar.push(randomize(characters.lowerCase));
     guaranteedChar.push(randomize(characters.numbers));
 
   // If user desires special characters: 
   } else if (!options.hasUpperCase && !options.hasNumberChar && options.hasSpecialChar) {
     chosenCharacters = characters.lowerCase.concat(characters.special);
+    guaranteedChar.push(randomize(characters.lowerCase));
     guaranteedChar.push(randomize(characters.special));
   
   // If user desires only lower case letters: 
